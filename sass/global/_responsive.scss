@@ -1,0 +1,23 @@
+@use "sass:math";
+//ブレイクポイントの値
+$breakpoints: (
+  sp: 375,
+  md: 768,
+  lg: 1024,
+  xl: 1440,
+);
+
+//メディアクエリー
+$mediaqueries: (
+  sp2: "screen and (max-width: #{map-get($breakpoints,'sp2')}px)",
+  sp: "screen and (max-width: #{map-get($breakpoints,'sp')}px)",
+  tab: "screen and (max-width: #{map-get($breakpoints,'tab')}px)",
+  pc: "screen and (max-width: #{map-get($breakpoints,'pc')}px)",
+);
+
+// ブレイクポイントの設定
+@mixin mq($mediaquery: md) {
+  @media #{map-get($mediaqueries, $mediaquery)} {
+    @content;
+  }
+}
